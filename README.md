@@ -1,10 +1,4 @@
 <p align="center">
-  <img src="public/logo.jpg" alt="Rocha Barbearia Logo" width="200" />
-</p>
-
-<h1 align="center">💈 Rocha Barbearia</h1>
-
-<p align="center">
   Sistema de gestão e agendamento online para barbearia, com autenticação via JWT, painel do cliente e controle de horários.
 </p>
 
