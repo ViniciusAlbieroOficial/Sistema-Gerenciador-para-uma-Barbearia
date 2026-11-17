@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Rocha Barbearia</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="auth-page">
+
+    <!-- Logo no topo superior centralizada -->
+    <div class="logo-container">
+        <img src="logo.jpg" alt="Rocha Barbearia Logo">
+    </div>
+
+    <div class="auth-container">
+        <h2>ROCHA BARBEARIA</h2>
+        <p class="subtitle">Acesse sua conta para agendar</p>
+
+        <form id="loginForm">
+            <div class="input-group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" placeholder="seu@email.com" required>
+            </div>
+
+            <div class="input-group">
+                <label for="senha">Senha</label>
+                <input type="password" id="senha" placeholder="••••••••" required>
+            </div>
+
+            <button type="submit" class="btn-primary">Entrar</button>
+        </form>
+
+        <div id="mensagemLogin" class="mensagem-feedback"></div>
+
+        <div class="auth-links">
+            Ainda não tem conta? <a href="cadastro.html">Cadastre-se aqui</a>
+        </div>
+    </div>
+
+    <script>
+        if (localStorage.getItem('token') && localStorage.getItem('userEmail')) {
+            window.location.href = '/dashboard.html';
+        }
+
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const senha = document.getElementById('senha').value;
+            const msgDiv = document.getElementById('mensagemLogin');
+
+            try {
+                const resposta = await fetch('/api/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, senha })
+                });
+
+                const dados = await resposta.json();
+
+                if (resposta.ok) {
+                    msgDiv.textContent = dados.message || "Login realizado com sucesso!";
+                    msgDiv.className = "mensagem-feedback sucesso";
+
+                    localStorage.setItem('token', dados.token);
+                    localStorage.setItem('userEmail', dados.user.email);;
+
+                    setTimeout(() => {
+                        window.location.href = '/dashboard.html';
+                    }, 800);
+                } else {
+                    msgDiv.textContent = dados.error || "E-mail ou senha inválidos.";
+                    msgDiv.className = "mensagem-feedback erro";
+                }
+            } catch (err) {
+                console.error(err);
+                msgDiv.textContent = "Erro de conexão com o servidor.";
+                msgDiv.className = "mensagem-feedback erro";
+            }
+        });
+    </script>
+</body>
+
+</html>

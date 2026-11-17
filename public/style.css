@@ -1,0 +1,343 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: #121212;
+    color: #ffffff;
+    min-height: 100vh;
+}
+
+/* =========================================
+   ESTILOS PARA LOGIN E CADASTRO (COM LOGO)
+   ========================================= */
+body.auth-page {
+    background-color: #f39c12; /* Fundo amarelo-ouro da logo */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+/* Estilo para a logo centralizada no topo */
+/* Estilo para a logo centralizada no topo */
+.logo-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.logo-container img {
+    max-width: 180px;  /* Tamanho máximo ideal para não ficar gigante */
+    height: auto;      /* Mantém a proporção correta automaticamente (sem achatar) */
+    display: inline-block;
+    border-radius: 12px; /* Cantos levemente arredondados ou remova se preferir quadrado */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.auth-container {
+    background-color: #1e140a; /* Marrom escuro café inspirado na logo */
+    width: 100%;
+    max-width: 420px;
+    padding: 35px 30px;
+    border-radius: 12px;
+    border: 1px solid #332211;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+.auth-container h2 {
+    color: #f39c12;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 5px;
+    letter-spacing: 0.5px;
+}
+
+.auth-container p.subtitle {
+    color: #cccccc;
+    text-align: center;
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+.auth-links {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #cccccc;
+}
+
+.auth-links a {
+    color: #f39c12;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.auth-links a:hover {
+    text-decoration: underline;
+}
+
+/* =========================================
+   ESTILOS PARA O DASHBOARD (PAINEL LATERAL)
+   ========================================= */
+body.dashboard-page {
+    display: flex;
+    background-color: #121212;
+}
+
+aside {
+    width: 260px;
+    background-color: #1e140a;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 30px 20px;
+    border-right: 1px solid #332211;
+}
+
+aside .brand h2 {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: #f39c12;
+    margin-bottom: 5px;
+}
+
+aside .brand p {
+    font-size: 13px;
+    color: #cccccc;
+}
+
+aside .user-profile {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #332211;
+}
+
+aside .user-profile span {
+    display: block;
+    font-size: 12px;
+    color: #cccccc;
+}
+
+aside .user-profile strong {
+    font-size: 14px;
+    color: #ffffff;
+    word-break: break-all;
+}
+
+.btn-logout {
+    background-color: #121212;
+    color: #ff4d4d;
+    border: 1px solid #ff4d4d;
+    padding: 10px 15px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.btn-logout:hover {
+    background-color: #ff4d4d;
+    color: #ffffff;
+}
+
+main {
+    flex: 1;
+    padding: 40px;
+    overflow-y: auto;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+header h1 {
+    font-size: 26px;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+header p {
+    color: #cccccc;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.card {
+    background: #1e140a;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    border: 1px solid #332211;
+}
+
+.card h3 {
+    font-size: 18px;
+    color: #ffffff;
+    margin-bottom: 20px;
+    font-weight: 600;
+    border-bottom: 2px solid #332211;
+    padding-bottom: 10px;
+}
+
+/* =========================================
+   COMPONENTES COMPARTILHADOS (INPUTS / BOTÕES)
+   ========================================= */
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: #dddddd;
+    margin-bottom: 6px;
+}
+
+.input-group select,
+.input-group input {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1px solid #332211;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #ffffff;
+    background-color: #121212;
+    transition: all 0.2s;
+}
+
+.input-group select:focus,
+.input-group input:focus {
+    outline: none;
+    border-color: #f39c12;
+    background-color: #1e140a;
+    box-shadow: 0 0 0 3px rgba(243, 156, 18, 0.25);
+}
+
+::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #f39c12;
+    color: #121212;
+    border: none;
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 10px;
+}
+
+.btn-primary:hover {
+    background-color: #e08b0b;
+}
+
+/* Alertas de Feedback */
+.mensagem-feedback {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    text-align: center;
+    display: none;
+}
+
+.mensagem-feedback.sucesso {
+    display: block;
+    background-color: rgba(46, 204, 113, 0.2);
+    color: #2ecc71;
+    border: 1px solid #2ecc71;
+}
+
+.mensagem-feedback.erro {
+    display: block;
+    background-color: rgba(231, 76, 60, 0.2);
+    color: #e74c3c;
+    border: 1px solid #e74c3c;
+}
+
+/* =========================================
+   TABELA DE AGENDAMENTOS
+   ========================================= */
+.table-responsive {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 14px;
+}
+
+th {
+    background-color: #121212;
+    color: #f39c12;
+    padding: 12px;
+    font-weight: 600;
+    border-bottom: 2px solid #332211;
+}
+
+td {
+    padding: 12px;
+    border-bottom: 1px solid #332211;
+    color: #ffffff;
+}
+
+.badge {
+    background-color: rgba(243, 156, 18, 0.2);
+    color: #f39c12;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    border: 1px solid rgba(243, 156, 18, 0.4);
+}
+
+/* =========================================
+   RESPONSIVIDADE MOBILE
+   ========================================= */
+@media (max-width: 900px) {
+    body.dashboard-page {
+        flex-direction: column;
+    }
+    aside {
+        width: 100%;
+        flex-direction: row;
+        align-items: center;
+        padding: 15px 20px;
+    }
+    aside .user-profile,
+    aside .brand p {
+        display: none;
+    }
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+    main {
+        padding: 20px;
+    }
+}
